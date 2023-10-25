@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="9bc3adc9-ec5f-4ebd-b31b-de30be9722e2">
+  <producedTypes>
+    <objectType typeId="48c3cf54-7523-4b08-a58d-95ed238f1282" valueTypeId="db0c75b3-7c1e-4f00-8e72-ded51d7287ef"/>
+    <managerType typeId="31fe8f67-d9f3-4034-abf0-9539062cc526" valueTypeId="d384e772-655b-4b59-9c44-f6494d2d0422"/>
+  </producedTypes>
+  <name>WorkWithNeuronet</name>
+  <synonym>
+    <key>ru</key>
+    <value>Work with neuronet</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.WorkWithNeuronet.Form.Workplace</defaultForm>
+  <attributes uuid="ffcbc4db-43bc-4b57-a7f6-1509fc16c595">
+    <name>Neuronet</name>
+    <synonym>
+      <key>ru</key>
+      <value>Neuronet</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Neuronets</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <tabularSections uuid="32f4c440-ce66-4362-935d-04dc38d297ea">
+    <producedTypes>
+      <objectType typeId="553fc245-b37d-4aa4-a0e0-7e95e48addc4" valueTypeId="612487c7-c27c-48e0-b27a-ed7dd96bc3a0"/>
+      <rowType typeId="2acf3892-c633-4b79-81a5-4555c8dfd664" valueTypeId="742dd87b-0549-4390-a04a-598d4b63cb16"/>
+    </producedTypes>
+    <name>InputNeurons</name>
+    <synonym>
+      <key>ru</key>
+      <value>Input neurons</value>
+    </synonym>
+    <attributes uuid="4cf77d3e-20c4-4f2a-b241-8b55998637c8">
+      <name>Neuron</name>
+      <synonym>
+        <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Neurons</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="9db381c4-7f89-4786-8d80-b4ccad43fd84">
+      <name>Active</name>
+      <synonym>
+        <key>ru</key>
+        <value>Active</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>1</precision>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="5e8d7bd7-ef9a-4e28-95bd-1707ba30d07a">
+    <producedTypes>
+      <objectType typeId="b9f4a8aa-0388-47e7-9525-72076b257739" valueTypeId="b2c3a442-fe0d-4b15-b236-42792c76f12f"/>
+      <rowType typeId="e13aa507-3d22-4f0e-8045-11d612e419ab" valueTypeId="cf8f0918-17d5-4d6a-923d-6303413e8470"/>
+    </producedTypes>
+    <name>Result</name>
+    <synonym>
+      <key>ru</key>
+      <value>Result</value>
+    </synonym>
+    <attributes uuid="d911e1ef-0725-47b0-991d-ae6655bd85cf">
+      <name>Neuron</name>
+      <synonym>
+        <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Neurons</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="a3335746-3748-4728-8e9a-88e4777200c8">
+      <name>Value</name>
+      <synonym>
+        <key>ru</key>
+        <value>Value</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+          <scale>3</scale>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+  <forms uuid="f3f69ac8-2950-42d9-8eb4-d18303bd233f">
+    <name>Workplace</name>
+    <synonym>
+      <key>ru</key>
+      <value>Workplace</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

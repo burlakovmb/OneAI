@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Configuration xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="96709cf3-84b6-42ad-8426-05845d4ff67f">
+  <name>OneAI</name>
+  <synonym>
+    <key>ru</key>
+    <value>One AI</value>
+  </synonym>
+  <containedObjects classId="9cd510cd-abfc-11d4-9434-004095e12fc7" objectId="74f6e607-0466-4bd9-b316-5b0854bb89d2"/>
+  <containedObjects classId="9fcd25a0-4822-11d4-9414-008048da11f9" objectId="cf4473d5-cb55-48fc-94fb-5c3af61119c3"/>
+  <containedObjects classId="e3687481-0a87-462c-a166-9f34594f9bba" objectId="91ebc257-febf-4724-8ea5-fb4573ff7e9a"/>
+  <containedObjects classId="9de14907-ec23-4a07-96f0-85521cb6b53b" objectId="a763d550-3975-4dd8-9812-f118f7b3c6cc"/>
+  <containedObjects classId="51f2d5d8-ea4d-4064-8892-82951750031e" objectId="10fa97e7-6d45-41a0-8e7a-b84b3f1319e7"/>
+  <containedObjects classId="e68182ea-4237-4383-967f-90c1e3370bc7" objectId="8d7ea509-bcd5-4b58-a496-7f3945c022b1"/>
+  <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="365876d7-f319-4eb3-bc6d-37d171ee3c8e"/>
+  <defaultRunMode>ManagedApplication</defaultRunMode>
+  <usePurposes>PersonalComputer</usePurposes>
+  <usedMobileApplicationFunctionalities>
+    <functionality>
+      <use>true</use>
+    </functionality>
+    <functionality>
+      <functionality>OSBackup</functionality>
+      <use>true</use>
+    </functionality>
+  </usedMobileApplicationFunctionalities>
+  <defaultLanguage>Language.English</defaultLanguage>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <objectAutonumerationMode>NotAutoFree</objectAutonumerationMode>
+  <modalityUseMode>DontUse</modalityUseMode>
+  <synchronousPlatformExtensionAndAddInCallUseMode>DontUse</synchronousPlatformExtensionAndAddInCallUseMode>
+  <compatibilityMode>8.3.22</compatibilityMode>
+  <languages uuid="1c55a032-ab19-44c3-bf81-67c51e5a24be">
+    <name>English</name>
+    <synonym>
+      <key>ru</key>
+      <value>English</value>
+    </synonym>
+    <languageCode>en</languageCode>
+  </languages>
+  <catalogs>Catalog.Layers</catalogs>
+  <catalogs>Catalog.Neuronets</catalogs>
+  <catalogs>Catalog.Neurons</catalogs>
+  <dataProcessors>DataProcessor.WorkWithNeuronet</dataProcessors>
+</mdclass:Configuration>

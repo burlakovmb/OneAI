@@ -713,6 +713,10 @@
       <key>ru</key>
       <value>Get result</value>
     </title>
+    <title>
+      <key>en</key>
+      <value>Get result</value>
+    </title>
     <id>1</id>
     <use>
       <common>true</common>

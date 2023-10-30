@@ -17,7 +17,13 @@ Async Procedure ResultSelection(Item, RowSelected, Field, StandardProcessing)
 	QuestionText = NStr("en = 'Do you want to change existing experience of neuronet?'");
 	Answer = Await DoQueryBoxAsync(QuestionText, QuestionDialogMode.YesNo);
 	If Answer = DialogReturnCode.Yes Then
-		ChangeExperienceAtServer(Object.Neuronet, Item.CurrentData.Neuron);
+		InputNeurons = New Array;
+		Filter = New Structure("Active", 1);
+		For Each InputNeuron In Object.InputNeurons.FindRows(Filter) Do
+			InputNeurons.Add(InputNeuron.Neuron);
+		EndDo;
+		
+		ChangeExperienceAtServer(Object.Neuronet, Item.CurrentData.Neuron, InputNeurons);
 	EndIf;
 EndProcedure
 
@@ -275,14 +281,150 @@ Procedure GetResultAtServer()
 EndProcedure
 
 &AtServerNoContext
-Procedure ChangeExperienceAtServer(Neuronet, OutputNeuron)
-	SynapticLinksForUpdate = New ValueTable;
-	SynapticLinksForUpdate.Columns.Add("InputNeuron");
-	SynapticLinksForUpdate.Columns.Add("Neuron");
-	SynapticLinksForUpdate.Columns.Add("Weight");
+Function GetDataTreeByLayers(SynapticLinksForUpdate)
+	Query = New Query;
+	Query.Text =
+		"SELECT
+		|	SynapticLinks.InputNeuron,
+		|	SynapticLinks.Neuron,
+		|	SynapticLinks.Weight,
+		|	SynapticLinks.IsConstant,
+		|	SynapticLinks.Order
+		|INTO SynapticLinksForUpdate
+		|FROM
+		|	&SynapticLinks AS SynapticLinks
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	SynapticLinksForUpdate.InputNeuron,
+		|	SynapticLinksForUpdate.Neuron,
+		|	SynapticLinksForUpdate.Weight,
+		|	SynapticLinksForUpdate.IsConstant,
+		|	SynapticLinksForUpdate.Order AS Order
+		|FROM
+		|	SynapticLinksForUpdate AS SynapticLinksForUpdate
+		|
+		|ORDER BY
+		|	Order
+		|AUTOORDER
+		|TOTALS
+		|BY
+		|	Order
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|DROP SynapticLinksForUpdate";
 	
-	GetSynapticLinksForUpdate(SynapticLinksForUpdate, OutputNeuron);
-	a = 1;
+	Query.SetParameter("SynapticLinks", SynapticLinksForUpdate);
+	
+	QueryResult = Query.Execute();
+	
+	Return QueryResult.Select(QueryResultIteration.ByGroups);
+EndFunction
+
+&AtServerNoContext
+Function CheckSynapticLinkTable(SynapticLinkTable, InputNeurons)
+	Query = New Query;
+	Query.Text =
+		"SELECT
+		|	SynapticLinkTable.InputNeuron,
+		|	SynapticLinkTable.Neuron,
+		|	SynapticLinkTable.Weight,
+		|	SynapticLinkTable.IsConstant
+		|INTO SynapticLinksForUpdate
+		|FROM
+		|	&SynapticLinkTable AS SynapticLinkTable
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	SynapticLinksForUpdate.InputNeuron,
+		|	SynapticLinksForUpdate.Neuron,
+		|	SynapticLinksForUpdate.Weight,
+		|	SynapticLinksForUpdate.IsConstant
+		|FROM
+		|	SynapticLinksForUpdate AS SynapticLinksForUpdate
+		|WHERE
+		|	SynapticLinksForUpdate.InputNeuron IN (&InputNeurons)
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|DROP SynapticLinksForUpdate";
+	
+	Query.SetParameter("SynapticLinkTable", SynapticLinkTable);
+	Query.SetParameter("InputNeurons", InputNeurons);
+	
+	QueryResult = Query.Execute();
+	
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		Return True;
+	EndDo;
+	
+	Return False;
+EndFunction
+
+&AtServerNoContext
+Procedure ChangeExperienceAtServer(Neuronet, OutputNeuron, InputNeurons)
+	SynapticLinksForUpdate = New ValueTable;
+	SynapticLinksForUpdate.Columns.Add("InputNeuron", New TypeDescription("CatalogRef.Neurons"));
+	SynapticLinksForUpdate.Columns.Add("Neuron", New TypeDescription("CatalogRef.Neurons"));
+	SynapticLinksForUpdate.Columns.Add("Weight", New TypeDescription("Number"));
+	SynapticLinksForUpdate.Columns.Add("IsConstant", New TypeDescription("Boolean"));
+	SynapticLinksForUpdate.Columns.Add("Order", New TypeDescription("Number"));
+	
+	SynapticLinksForUpdateByLayers = New Structure;
+	
+	GetSynapticLinksForUpdate(SynapticLinksForUpdate, OutputNeuron, 1);
+	DataTreeByLayers = GetDataTreeByLayers(SynapticLinksForUpdate);
+	While DataTreeByLayers.Next() Do
+		SynapticLinksForUpdateByLayer = New ValueTable();
+		SynapticLinksForUpdateByLayer.Columns.Add("InputNeuron", New TypeDescription("CatalogRef.Neurons"));
+		SynapticLinksForUpdateByLayer.Columns.Add("Neuron", New TypeDescription("CatalogRef.Neurons"));
+		SynapticLinksForUpdateByLayer.Columns.Add("Weight", New TypeDescription("Number"));
+		SynapticLinksForUpdateByLayer.Columns.Add("IsConstant", New TypeDescription("Boolean"));
+		
+		NeuronsByLayer = DataTreeByLayers.Select();
+		While NeuronsByLayer.Next() Do
+			If SynapticLinksForUpdateByLayers.Property("LinkFor_" + Left(NeuronsByLayer.Neuron.UUID(), 8)) Then
+				SynapticLinksForUpdateByLayer = SynapticLinksForUpdateByLayers["LinkFor_" + Left(NeuronsByLayer.Neuron.UUID(), 8)].Copy();
+			EndIf;
+			
+			SynapticLinksForUpdateByLayerRow = SynapticLinksForUpdateByLayer.Add();
+			FillPropertyValues(SynapticLinksForUpdateByLayerRow, NeuronsByLayer);
+			SynapticLinksForUpdateByLayers.Insert("LinkFor_" + Left(NeuronsByLayer.InputNeuron.UUID(), 8), SynapticLinksForUpdateByLayer);
+		EndDo;
+	EndDo;
+	
+	CountOfLayers = GetCountOfLayers(Neuronet);
+	For Each Link In SynapticLinksForUpdateByLayers Do
+		If Link.Value.Count() <> CountOfLayers - 1 Then
+			Continue;
+		EndIf;
+		
+		If Not CheckSynapticLinkTable(Link.Value, InputNeurons) Then
+			Continue;
+		EndIf;
+		
+		For Each Link In Link.Value Do
+			If Link.IsConstant Then
+				Continue;
+			EndIf;
+			
+			NeuronObject = Link.Neuron.GetObject();
+			
+			Filter = New Structure("Neuron", Link.InputNeuron);
+			InputLinkRow = NeuronObject.InputLinks.FindRows(Filter)[0];
+			InputLinkRow.Weight = InputLinkRow.Weight + 1;
+			
+			Try
+				NeuronObject.Write();
+			Except
+				Message(ErrorDescription());
+			EndTry;
+		EndDo;
+	EndDo;
 EndProcedure
 
 &AtServerNoContext
@@ -307,14 +449,13 @@ Function GetInputLinks(Neuron)
 EndFunction
 
 &AtServerNoContext
-Procedure GetSynapticLinksForUpdate(SynapticLinksForUpdate, Neuron)
+Procedure GetSynapticLinksForUpdate(SynapticLinksForUpdate, Neuron, Order)
 	InputLinks = GetInputLinks(Neuron);
 	While InputLinks.Next() Do
-		If Not InputLinks.IsConstant Then
-			SynapticLinkForUpdate = SynapticLinksForUpdate.Add();
-			FillPropertyValues(SynapticLinkForUpdate, InputLinks);
-		EndIf;
-		GetSynapticLinksForUpdate(SynapticLinksForUpdate, InputLinks.InputNeuron);
+		SynapticLinkForUpdate = SynapticLinksForUpdate.Add();
+		FillPropertyValues(SynapticLinkForUpdate, InputLinks);
+		SynapticLinkForUpdate.Order = Order;
+		GetSynapticLinksForUpdate(SynapticLinksForUpdate, InputLinks.InputNeuron, Order + 1);
 	EndDo;
 EndProcedure
 

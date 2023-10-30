@@ -59,8 +59,12 @@
           <nonNegative>true</nonNegative>
         </numberQualifiers>
       </type>
-      <minValue xsi:type="core:UndefinedValue"/>
-      <maxValue xsi:type="core:UndefinedValue"/>
+      <minValue xsi:type="core:StringValue">
+        <value>0</value>
+      </minValue>
+      <maxValue xsi:type="core:StringValue">
+        <value>1</value>
+      </maxValue>
       <fillValue xsi:type="core:UndefinedValue"/>
     </attributes>
   </tabularSections>

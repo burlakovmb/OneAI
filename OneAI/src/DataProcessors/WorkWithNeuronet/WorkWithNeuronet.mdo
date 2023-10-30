@@ -9,12 +9,20 @@
     <key>ru</key>
     <value>Work with neuronet</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Work with neuronet</value>
+  </synonym>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.WorkWithNeuronet.Form.Workplace</defaultForm>
   <attributes uuid="ffcbc4db-43bc-4b57-a7f6-1509fc16c595">
     <name>Neuronet</name>
     <synonym>
       <key>ru</key>
+      <value>Neuronet</value>
+    </synonym>
+    <synonym>
+      <key>en</key>
       <value>Neuronet</value>
     </synonym>
     <type>
@@ -33,10 +41,18 @@
       <key>ru</key>
       <value>Input neurons</value>
     </synonym>
+    <synonym>
+      <key>en</key>
+      <value>Input neurons</value>
+    </synonym>
     <attributes uuid="4cf77d3e-20c4-4f2a-b241-8b55998637c8">
       <name>Neuron</name>
       <synonym>
         <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
         <value>Neuron</value>
       </synonym>
       <type>
@@ -50,6 +66,10 @@
       <name>Active</name>
       <synonym>
         <key>ru</key>
+        <value>Active</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
         <value>Active</value>
       </synonym>
       <type>
@@ -78,10 +98,18 @@
       <key>ru</key>
       <value>Result</value>
     </synonym>
+    <synonym>
+      <key>en</key>
+      <value>Result</value>
+    </synonym>
     <attributes uuid="d911e1ef-0725-47b0-991d-ae6655bd85cf">
       <name>Neuron</name>
       <synonym>
         <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
         <value>Neuron</value>
       </synonym>
       <type>
@@ -95,6 +123,10 @@
       <name>Value</name>
       <synonym>
         <key>ru</key>
+        <value>Value</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
         <value>Value</value>
       </synonym>
       <type>

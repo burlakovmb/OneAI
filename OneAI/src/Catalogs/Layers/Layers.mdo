@@ -12,6 +12,10 @@
     <key>ru</key>
     <value>Layers</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Layers</value>
+  </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Catalog.Layers.StandardAttribute.Code</inputByString>
   <inputByString>Catalog.Layers.StandardAttribute.Description</inputByString>

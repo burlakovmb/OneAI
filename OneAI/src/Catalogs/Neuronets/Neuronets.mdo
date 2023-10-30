@@ -12,6 +12,10 @@
     <key>ru</key>
     <value>Neuronets</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Neuronets</value>
+  </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Catalog.Neuronets.StandardAttribute.Code</inputByString>
   <inputByString>Catalog.Neuronets.StandardAttribute.Description</inputByString>

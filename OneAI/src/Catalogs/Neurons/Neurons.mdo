@@ -12,6 +12,10 @@
     <key>ru</key>
     <value>Neurons</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Neurons</value>
+  </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Catalog.Neurons.StandardAttribute.Code</inputByString>
   <inputByString>Catalog.Neurons.StandardAttribute.Description</inputByString>
@@ -173,6 +177,10 @@
         <key>ru</key>
         <value>Layer</value>
       </synonym>
+      <synonym>
+        <key>en</key>
+        <value>Layer</value>
+      </synonym>
       <type>
         <types>CatalogRef.Layers</types>
       </type>
@@ -185,6 +193,10 @@
       <name>Neuron</name>
       <synonym>
         <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
         <value>Neuron</value>
       </synonym>
       <type>
@@ -203,6 +215,10 @@
       <name>Weight</name>
       <synonym>
         <key>ru</key>
+        <value>Weight</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
         <value>Weight</value>
       </synonym>
       <type>

@@ -38,6 +38,8 @@
     <languageCode>en</languageCode>
   </languages>
   <subsystems>Subsystem.AI</subsystems>
+  <commonModules>CommonModule.CommonFunctionalityAI</commonModules>
+  <commonModules>CommonModule.CommonFunctionalityAIServerCall</commonModules>
   <catalogs>Catalog.Layers</catalogs>
   <catalogs>Catalog.Neuronets</catalogs>
   <catalogs>Catalog.Neurons</catalogs>

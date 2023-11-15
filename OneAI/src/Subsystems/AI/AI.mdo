@@ -7,4 +7,8 @@
   </synonym>
   <includeHelpInContents>true</includeHelpInContents>
   <includeInCommandInterface>true</includeInCommandInterface>
+  <content>Catalog.Layers</content>
+  <content>Catalog.Neuronets</content>
+  <content>Catalog.Neurons</content>
+  <content>DataProcessor.WorkWithNeuronet</content>
 </mdclass:Subsystem>

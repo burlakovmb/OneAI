@@ -40,6 +40,7 @@
   <subsystems>Subsystem.AI</subsystems>
   <commonModules>CommonModule.CommonFunctionalityAI</commonModules>
   <commonModules>CommonModule.CommonFunctionalityAIServerCall</commonModules>
+  <commonModules>CommonModule.WorkWithTabularPartsClient</commonModules>
   <catalogs>Catalog.Layers</catalogs>
   <catalogs>Catalog.Neuronets</catalogs>
   <catalogs>Catalog.Neurons</catalogs>

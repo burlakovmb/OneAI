@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2e7933da-3984-4278-95ae-b32689d2ad96">
+  <name>WorkWithTabularPartsClient</name>
+  <synonym>
+    <key>en</key>
+    <value>Work with tabular parts</value>
+  </synonym>
+  <clientManagedApplication>true</clientManagedApplication>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

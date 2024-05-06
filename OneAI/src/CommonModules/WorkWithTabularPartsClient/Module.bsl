@@ -1,12 +1,16 @@
 #Region Public
 
-Procedure SetFilterByKey(TabularPartItem, Key)
-	If Not ValueIsFilled(TabularPartItem) Then
-		Return;
-	EndIf;
-	
+Procedure SetFilterByKey(TabularPartItem, Key) Export
 	Filter = New Structure("Key", Key);
-	TabularPartItem.RowFilter = Filter;
+	TabularPartItem.RowFilter = New FixedStructure(Filter);
+EndProcedure
+
+Procedure DeleteRowsByKey(TabularPart, Key) Export
+	Filter = New Structure("Key", Key);	
+	RowsArray = TabularPart.FindRows(Filter);
+	For Each Row In RowsArray Do
+		TabularPart.Delete(Row);
+	EndDo;
 EndProcedure
 
 #EndRegion

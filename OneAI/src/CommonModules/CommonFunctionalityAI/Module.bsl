@@ -79,6 +79,70 @@ Function GetInputNeurons(Neuronet) Export
 	Return QueryResult.Select();
 EndFunction
 
+Function GetOutputNeurons(Neuronet) Export
+	Query = New Query;
+	Query.Text =
+		"SELECT
+		|	NeuronsInputLinks.Ref AS Neuron
+		|INTO NotInputNeurons
+		|FROM
+		|	Catalog.Neurons.InputLinks AS NeuronsInputLinks
+		|WHERE
+		|	NeuronsInputLinks.Layer.Owner = &Neuronet
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	NeuronsInputLinks.Neuron AS Neuron
+		|INTO NotOutputNeurons
+		|FROM
+		|	Catalog.Neurons.InputLinks AS NeuronsInputLinks
+		|WHERE
+		|	NeuronsInputLinks.Layer.Owner = &Neuronet
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	NotInputNeurons.Neuron AS Neuron,
+		|	CASE
+		|		WHEN NotOutputNeurons.Neuron IS NULL
+		|			THEN TRUE
+		|		ELSE FALSE
+		|	END AS IsOutputNeuron
+		|INTO ResultTable
+		|FROM
+		|	NotInputNeurons AS NotInputNeurons
+		|		LEFT JOIN NotOutputNeurons AS NotOutputNeurons
+		|		ON (NotInputNeurons.Neuron = NotOutputNeurons.Neuron)
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	ResultTable.Neuron AS Neuron
+		|FROM
+		|	ResultTable AS ResultTable
+		|WHERE
+		|	ResultTable.IsOutputNeuron
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|DROP NotInputNeurons
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|DROP NotOutputNeurons
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|DROP ResultTable";
+	
+	Query.SetParameter("Neuronet", Neuronet);
+	
+	QueryResult = Query.Execute();
+	
+	Return QueryResult.Select();
+EndFunction
+
 Function GetDataTreeByLayers(SynapticLinksForUpdate) Export
 	Query = New Query;
 	Query.Text =

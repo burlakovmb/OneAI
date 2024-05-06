@@ -44,10 +44,65 @@
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
   </attributes>
-  <tabularSections uuid="b12739e5-096e-40ac-b660-abf5cfc167ef">
+  <attributes uuid="b400297e-e158-4700-a5cb-5e800ea1884a">
+    <name>StepsQty</name>
+    <synonym>
+      <key>en</key>
+      <value>Steps qty</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <tabularSections uuid="4b19d7d9-1cf7-4f75-9f79-463eb7203b94">
     <producedTypes>
-      <objectType typeId="56183fd9-ec64-45ce-9c54-0e029d8bdf3d" valueTypeId="1e860acf-4f51-457e-bd08-b22c4447d628"/>
-      <rowType typeId="c76b2ea3-ee0b-4040-bc0f-fe466a6a0961" valueTypeId="61bb489f-9201-4fbd-bcc3-a5dc1c1bf096"/>
+      <objectType typeId="1e6fc18e-02a5-4005-a7fb-8e433abc3528" valueTypeId="3677d6f6-185b-41b2-a597-2cb274c7dcc3"/>
+      <rowType typeId="05887e69-6867-483f-8cf5-8e7ccd183ed6" valueTypeId="ca6c6f3f-f24d-4c4d-a6fd-3acb895412b4"/>
+    </producedTypes>
+    <name>DataSets</name>
+    <synonym>
+      <key>en</key>
+      <value>Data sets</value>
+    </synonym>
+    <fillChecking>ShowError</fillChecking>
+    <attributes uuid="25f73b61-f065-447e-845b-0893bb13556b">
+      <name>DataSet</name>
+      <synonym>
+        <key>en</key>
+        <value>Data set</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>100</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="2e3ce2e4-c771-406a-a5a5-94472b441e25">
+      <name>Key</name>
+      <synonym>
+        <key>en</key>
+        <value>Key</value>
+      </synonym>
+      <type>
+        <types>UUID</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="05ff56d6-e2e1-4963-8f5b-0e65b49f39d6">
+    <producedTypes>
+      <objectType typeId="ba338784-661e-4bf2-92bb-f5d1a249483e" valueTypeId="b4d2d0d4-ba08-4114-b7ee-c2b89b6a7d0d"/>
+      <rowType typeId="94b521ca-8a62-48dd-805e-bb6e861077a5" valueTypeId="97084c6a-917f-4059-b95c-f084a33532c8"/>
     </producedTypes>
     <name>InputNeurons</name>
     <synonym>
@@ -58,7 +113,7 @@
       <key>en</key>
       <value>Input neurons</value>
     </synonym>
-    <attributes uuid="9b9dbf3e-0728-4202-abb5-f3cb06e95fcf">
+    <attributes uuid="e1da3a99-1697-42f2-8c39-a3f9be354a3f">
       <name>Neuron</name>
       <synonym>
         <key>ru</key>
@@ -73,9 +128,8 @@
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
-      <fillValue xsi:type="core:UndefinedValue"/>
     </attributes>
-    <attributes uuid="3b34cadb-272c-45cd-9851-4713ffb884f2">
+    <attributes uuid="a8f87cd7-5dae-4edf-936d-984e6ea1f6e0">
       <name>Active</name>
       <synonym>
         <key>ru</key>
@@ -98,13 +152,24 @@
       <maxValue xsi:type="core:StringValue">
         <value>1</value>
       </maxValue>
-      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="b6c1726a-89dc-4a78-a51e-d584948cf025">
+      <name>Key</name>
+      <synonym>
+        <key>en</key>
+        <value>Key</value>
+      </synonym>
+      <type>
+        <types>UUID</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
     </attributes>
   </tabularSections>
-  <tabularSections uuid="3a015c52-70b7-422d-aefb-c6d3d2a2bbf3">
+  <tabularSections uuid="c0602385-2cd3-4a68-b79c-cd3e19241ad6">
     <producedTypes>
-      <objectType typeId="348e952d-0824-4048-9706-c40fd073c2d9" valueTypeId="00ca491f-5572-433f-a0e4-3775050da3de"/>
-      <rowType typeId="b0679024-cc37-446f-b468-aef917f8e212" valueTypeId="d8ead66f-a1b9-4816-be37-ff60d48c16db"/>
+      <objectType typeId="fc547775-38b9-4d49-ba8e-0a361ce50a86" valueTypeId="043c7594-55ba-49e6-a2de-5ca72412e1bd"/>
+      <rowType typeId="069131df-9c6e-46fe-b6dd-0ecb909ca3e3" valueTypeId="1af3096b-649c-4796-88ca-bc9016bc6037"/>
     </producedTypes>
     <name>Result</name>
     <synonym>
@@ -115,7 +180,7 @@
       <key>en</key>
       <value>Result</value>
     </synonym>
-    <attributes uuid="20724ac8-7ace-421e-bccb-bc88985e99f8">
+    <attributes uuid="8b4ea029-57fe-4ac3-8cdc-87cd009a7487">
       <name>Neuron</name>
       <synonym>
         <key>ru</key>
@@ -130,9 +195,8 @@
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
-      <fillValue xsi:type="core:UndefinedValue"/>
     </attributes>
-    <attributes uuid="b2532f9f-b040-4f56-b143-cbf7585dffd2">
+    <attributes uuid="a871221d-fee4-4d5d-8bab-056490757ffa">
       <name>Value</name>
       <synonym>
         <key>ru</key>
@@ -151,7 +215,18 @@
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
-      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="4a81752f-bc4a-4ebe-9544-b283598b1deb">
+      <name>Key</name>
+      <synonym>
+        <key>en</key>
+        <value>Key</value>
+      </synonym>
+      <type>
+        <types>UUID</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
     </attributes>
   </tabularSections>
 </mdclass:DataProcessor>

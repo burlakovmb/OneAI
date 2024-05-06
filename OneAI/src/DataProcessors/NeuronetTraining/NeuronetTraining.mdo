@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5374cdcc-ecfa-4fcf-9c7e-00d48f672e1c">
+  <producedTypes>
+    <objectType typeId="3e21d8a0-e1c4-4ae8-8cd1-fbc2b2d91d1a" valueTypeId="5f91ced1-5c77-48d3-aa27-3ca4a0f2857c"/>
+    <managerType typeId="15868894-1798-4bd0-9c2c-d33a4f066c41" valueTypeId="e816e292-6cbf-45d8-9a1c-4337caf29f4d"/>
+  </producedTypes>
+  <name>NeuronetTraining</name>
+  <synonym>
+    <key>en</key>
+    <value>Neuronet training</value>
+  </synonym>
+  <comment>by back propagation method</comment>
+  <useStandardCommands>true</useStandardCommands>
+  <attributes uuid="43f705c0-89fa-42fe-8cdd-8cc6b476e7a6">
+    <name>Neuronet</name>
+    <synonym>
+      <key>ru</key>
+      <value>Neuronet</value>
+    </synonym>
+    <synonym>
+      <key>en</key>
+      <value>Neuronet</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Neuronets</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="eeaee747-8f7b-425c-8726-b102b4093ad4">
+    <name>Speed</name>
+    <synonym>
+      <key>en</key>
+      <value>Speed</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <scale>3</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <tabularSections uuid="b12739e5-096e-40ac-b660-abf5cfc167ef">
+    <producedTypes>
+      <objectType typeId="56183fd9-ec64-45ce-9c54-0e029d8bdf3d" valueTypeId="1e860acf-4f51-457e-bd08-b22c4447d628"/>
+      <rowType typeId="c76b2ea3-ee0b-4040-bc0f-fe466a6a0961" valueTypeId="61bb489f-9201-4fbd-bcc3-a5dc1c1bf096"/>
+    </producedTypes>
+    <name>InputNeurons</name>
+    <synonym>
+      <key>ru</key>
+      <value>Input neurons</value>
+    </synonym>
+    <synonym>
+      <key>en</key>
+      <value>Input neurons</value>
+    </synonym>
+    <attributes uuid="9b9dbf3e-0728-4202-abb5-f3cb06e95fcf">
+      <name>Neuron</name>
+      <synonym>
+        <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
+        <value>Neuron</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Neurons</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="3b34cadb-272c-45cd-9851-4713ffb884f2">
+      <name>Active</name>
+      <synonym>
+        <key>ru</key>
+        <value>Active</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
+        <value>Active</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>1</precision>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:StringValue">
+        <value>0</value>
+      </minValue>
+      <maxValue xsi:type="core:StringValue">
+        <value>1</value>
+      </maxValue>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="3a015c52-70b7-422d-aefb-c6d3d2a2bbf3">
+    <producedTypes>
+      <objectType typeId="348e952d-0824-4048-9706-c40fd073c2d9" valueTypeId="00ca491f-5572-433f-a0e4-3775050da3de"/>
+      <rowType typeId="b0679024-cc37-446f-b468-aef917f8e212" valueTypeId="d8ead66f-a1b9-4816-be37-ff60d48c16db"/>
+    </producedTypes>
+    <name>Result</name>
+    <synonym>
+      <key>ru</key>
+      <value>Result</value>
+    </synonym>
+    <synonym>
+      <key>en</key>
+      <value>Result</value>
+    </synonym>
+    <attributes uuid="20724ac8-7ace-421e-bccb-bc88985e99f8">
+      <name>Neuron</name>
+      <synonym>
+        <key>ru</key>
+        <value>Neuron</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
+        <value>Neuron</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Neurons</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="b2532f9f-b040-4f56-b143-cbf7585dffd2">
+      <name>Value</name>
+      <synonym>
+        <key>ru</key>
+        <value>Value</value>
+      </synonym>
+      <synonym>
+        <key>en</key>
+        <value>Value</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+          <scale>3</scale>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+</mdclass:DataProcessor>

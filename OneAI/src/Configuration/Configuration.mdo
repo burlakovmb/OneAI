@@ -43,5 +43,7 @@
   <catalogs>Catalog.Layers</catalogs>
   <catalogs>Catalog.Neuronets</catalogs>
   <catalogs>Catalog.Neurons</catalogs>
+  <catalogs>Catalog.TrainingDataSets</catalogs>
   <dataProcessors>DataProcessor.WorkWithNeuronet</dataProcessors>
+  <dataProcessors>DataProcessor.NeuronetTraining</dataProcessors>
 </mdclass:Configuration>

@@ -11,4 +11,6 @@
   <content>Catalog.Neuronets</content>
   <content>Catalog.Neurons</content>
   <content>DataProcessor.WorkWithNeuronet</content>
+  <content>DataProcessor.NeuronetTraining</content>
+  <content>Catalog.TrainingDataSets</content>
 </mdclass:Subsystem>

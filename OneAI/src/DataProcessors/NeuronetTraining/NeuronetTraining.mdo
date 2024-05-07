@@ -11,6 +11,7 @@
   </synonym>
   <comment>by back propagation method</comment>
   <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.NeuronetTraining.Form.Workplace</defaultForm>
   <attributes uuid="43f705c0-89fa-42fe-8cdd-8cc6b476e7a6">
     <name>Neuronet</name>
     <synonym>
@@ -26,6 +27,24 @@
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+  </attributes>
+  <attributes uuid="2e5dfdcf-b27f-48d2-912a-08e7bcc58cc3">
+    <name>DataSet</name>
+    <synonym>
+      <key>en</key>
+      <value>Data set</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.TrainingDataSets</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameterLinks>
+      <name>Filter.Neuronet</name>
+      <field>DataProcessor.NeuronetTraining.Attribute.Neuronet</field>
+    </choiceParameterLinks>
   </attributes>
   <attributes uuid="eeaee747-8f7b-425c-8726-b102b4093ad4">
     <name>Speed</name>
@@ -43,6 +62,7 @@
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
   </attributes>
   <attributes uuid="b400297e-e158-4700-a5cb-5e800ea1884a">
     <name>StepsQty</name>
@@ -59,6 +79,7 @@
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
   </attributes>
   <tabularSections uuid="4b19d7d9-1cf7-4f75-9f79-463eb7203b94">
     <producedTypes>
@@ -229,4 +250,13 @@
       <maxValue xsi:type="core:UndefinedValue"/>
     </attributes>
   </tabularSections>
+  <forms uuid="14314db3-5eaf-4443-b68f-08b33176f8fa">
+    <name>Workplace</name>
+    <synonym>
+      <key>en</key>
+      <value>Workplace</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
 </mdclass:DataProcessor>

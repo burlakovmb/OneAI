@@ -47,6 +47,30 @@ EndProcedure
 
 #EndRegion
 
+#Region FormTableItemsEventHandlersDataSets
+
+&AtClient
+Procedure DataSetsOnActivateRow(Item)
+	CurrentData = Item.CurrentData;
+	If CurrentData = Undefined Then
+		Return;
+	EndIf;
+	
+	WorkWithTabularPartsClient.SetFilterByKey(Items.InputNeurons, CurrentData.Key);
+	WorkWithTabularPartsClient.SetFilterByKey(Items.Result, CurrentData.Key);
+EndProcedure
+
+#Region FormCommandsEventHandlers
+
+&AtClient
+Procedure Run(Command)
+	
+EndProcedure
+
+#EndRegion
+
+#EndRegion
+
 #Region Private
 
 &AtClient

@@ -23,7 +23,7 @@ Async Procedure ResultSelection(Item, RowSelected, Field, StandardProcessing)
 			InputNeurons.Add(InputNeuron.Neuron);
 		EndDo;
 		
-		CommonFunctionalityAIServerCall.ChangeExperience(Object.Neuronet, Item.CurrentData.Neuron, InputNeurons);
+		CommonFunctionalityAIServerCall.ChangeExperience(Object.Neuronet, Item.CurrentData.Neuron, InputNeurons, 1);
 	EndIf;
 EndProcedure
 

@@ -60,14 +60,36 @@ Procedure DataSetsOnActivateRow(Item)
 	WorkWithTabularPartsClient.SetFilterByKey(Items.Result, CurrentData.Key);
 EndProcedure
 
+#EndRegion
+
 #Region FormCommandsEventHandlers
 
 &AtClient
 Procedure Run(Command)
+	For Step = 1 To Object.StepsQty Do
+		For Each DataSet In Object.DataSets Do
+			InputNeurons = New Array;
+			Filter = New Structure("Active", 1);
+			Filter.Insert("Key", DataSet.Key);
+			For Each InputNeuron In Object.InputNeurons.FindRows(Filter) Do
+				InputNeurons.Add(InputNeuron.Neuron);
+			EndDo;
+		
+			Filter = New Structure("Key", DataSet.Key);
+			For Each ResultNeuron In Object.Result.FindRows(Filter) Do
+				If ResultNeuron = 0 Then
+					Continue;
+				EndIf;
+				
+				ExperienceWeight = ResultNeuron.Value * Object.Speed;
+				CommonFunctionalityAIServerCall.ChangeExperience(Object.Neuronet, ResultNeuron.Neuron, InputNeurons, ExperienceWeight);
+			EndDo;
+		EndDo;
+	EndDo;
 	
+	MessageText = NStr("en = 'Training was completed!'");
+	Message(MessageText);
 EndProcedure
-
-#EndRegion
 
 #EndRegion
 

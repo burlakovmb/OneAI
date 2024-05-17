@@ -256,7 +256,7 @@ Procedure GetSynapticLinksForUpdate(SynapticLinksForUpdate, Neuron, Order) Expor
 	EndDo;
 EndProcedure
 
-Procedure ChangeExperience(Neuronet, OutputNeuron, InputNeurons) Export
+Procedure ChangeExperience(Neuronet, OutputNeuron, InputNeurons, ExperienceWeight) Export
 	SynapticLinksForUpdate = New ValueTable;
 	SynapticLinksForUpdate.Columns.Add("InputNeuron", New TypeDescription("CatalogRef.Neurons"));
 	SynapticLinksForUpdate.Columns.Add("Neuron", New TypeDescription("CatalogRef.Neurons"));
@@ -306,7 +306,7 @@ Procedure ChangeExperience(Neuronet, OutputNeuron, InputNeurons) Export
 			
 			Filter = New Structure("Neuron", Link.InputNeuron);
 			InputLinkRow = NeuronObject.InputLinks.FindRows(Filter)[0];
-			InputLinkRow.Weight = InputLinkRow.Weight + 1;
+			InputLinkRow.Weight = InputLinkRow.Weight + ExperienceWeight;
 			
 			Try
 				NeuronObject.Write();

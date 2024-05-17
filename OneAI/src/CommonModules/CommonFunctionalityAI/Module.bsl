@@ -143,6 +143,23 @@ Function GetOutputNeurons(Neuronet) Export
 	Return QueryResult.Select();
 EndFunction
 
+Function GetNeurons(Neuronet) Export
+	Query = New Query;
+	Query.Text =
+		"SELECT
+		|	Neurons.Ref AS Neuron
+		|FROM
+		|	Catalog.Neurons AS Neurons
+		|WHERE
+		|	Neurons.Owner.Owner = &Neuronet";
+	
+	Query.SetParameter("Neuronet", Neuronet);
+	
+	QueryResult = Query.Execute();
+	
+	Return QueryResult.Select();
+EndFunction
+
 Function GetDataTreeByLayers(SynapticLinksForUpdate) Export
 	Query = New Query;
 	Query.Text =

@@ -14,7 +14,7 @@ EndProcedure
 
 &AtClient
 Async Procedure ResultSelection(Item, RowSelected, Field, StandardProcessing)
-	QuestionText = NStr("en = 'Do you want to change existing experience of neuronet?'");
+	QuestionText = NStr("en = 'Do you want to change an existing experience of neuronet?'");
 	Answer = Await DoQueryBoxAsync(QuestionText, QuestionDialogMode.YesNo);
 	If Answer = DialogReturnCode.Yes Then
 		InputNeurons = New Array;

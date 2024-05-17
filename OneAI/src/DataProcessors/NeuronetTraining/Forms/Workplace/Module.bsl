@@ -66,6 +66,10 @@ EndProcedure
 
 &AtClient
 Procedure Run(Command)
+	If Not CheckFilling() Then
+		Return;
+	EndIf;
+	
 	For Step = 1 To Object.StepsQty Do
 		For Each DataSet In Object.DataSets Do
 			InputNeurons = New Array;
@@ -89,6 +93,15 @@ Procedure Run(Command)
 	
 	MessageText = NStr("en = 'Training was completed!'");
 	Message(MessageText);
+EndProcedure
+
+&AtClient
+Async Procedure DeleteAnExistingExperience(Command)
+	QuestionText = NStr("en = 'Do you want to delete an existing experience of neuronet?'");
+	Answer = Await DoQueryBoxAsync(QuestionText, QuestionDialogMode.YesNo);
+	If Answer = DialogReturnCode.Yes Then
+		DeleteAnExistingExperienceAtServer();
+	EndIf;	
 EndProcedure
 
 #EndRegion
@@ -131,6 +144,37 @@ Procedure OnStartChoice(StandardProcessing)
 			ClearTabularParts();
 		EndIf;
 	EndIf;
+EndProcedure
+
+&AtServer
+Procedure DeleteAnExistingExperienceAtServer()
+	Errors = False;
+	Neurons = CommonFunctionalityAI.GetNeurons(Object.Neuronet);
+	While Neurons.Next() Do
+		NeuronObject = Neurons.Neuron.GetObject();
+		For Each Link In NeuronObject.InputLinks Do
+			If Link.IsConstant Then
+				Continue;
+			EndIf;
+			
+			Link.Weight = 0;
+		EndDo;
+		
+		Try
+			NeuronObject.Write();
+		Except
+			Errors = True;
+			Message(ErrorDescription());
+		EndTry;
+	EndDo;
+	
+	If Errors Then
+		MessageText = NStr("en = 'You have some errors. Try again later.'");
+	Else
+		MessageText = NStr("en = 'An existing experience was deleted successfully.'");
+	EndIf;
+	
+	Message(MessageText);
 EndProcedure
 
 #EndRegion
